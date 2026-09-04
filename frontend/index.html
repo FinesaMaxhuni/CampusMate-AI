@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ask AI a Question | CampusMate AI</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/sidebar.css">
+	<link rel="stylesheet" href="css/components.css">
+	<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+			<div class="brand">
+				<div class="brand-mark" aria-hidden="true"><span class="brand-cap"></span><span class="brand-tassel"></span></div>
+				<div><strong>CampusMate AI</strong><span>Your AI Study Assistant</span></div>
+			</div>
+			<nav class="sidebar-nav">
+				<a class="nav-item active" href="index.html" aria-current="page"><span class="nav-icon" aria-hidden="true">&#128172;</span><span>1. Ask AI a Question</span></a>
+				<a class="nav-item" href="pages/explain.html"><span class="nav-icon" aria-hidden="true">&#128218;</span><span>2. Explain a Topic</span></a>
+				<a class="nav-item" href="pages/summarize.html"><span class="nav-icon" aria-hidden="true">&#128196;</span><span>3. Summarize Text</span></a>
+				<a class="nav-item" href="pages/generate-quiz.html"><span class="nav-icon" aria-hidden="true">&#9745;</span><span>4. Generate Quiz</span></a>
+				<a class="nav-item" href="pages/take-quiz.html"><span class="nav-icon" aria-hidden="true">&#9654;</span><span>5. Take Quiz</span></a>
+				<a class="nav-item" href="pages/history.html"><span class="nav-icon" aria-hidden="true">&#9719;</span><span>6. View Previous Questions</span></a>
+				<a class="nav-item" href="pages/statistics.html"><span class="nav-icon" aria-hidden="true">&#128202;</span><span>7. View Statistics</span></a>
+				<a class="nav-item exit-item" href="#"><span class="nav-icon" aria-hidden="true">&#10145;</span><span>8. Exit</span></a>
+			</nav>
+			<div class="sidebar-notice"><span class="notice-icon" aria-hidden="true">&#9888;</span><p>AI-generated information may contain mistakes. Verify important information and do not enter sensitive data.</p></div>
+		</aside>
+
+		<div class="main-shell">
+			<header class="topbar">
+				<button class="menu-button" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="true"><span></span><span></span><span></span></button>
+				<div class="user-area"><span>Hello, Finesë</span><span class="avatar" aria-label="Finesë">F</span></div>
+			</header>
+
+			<main class="content">
+				<section class="page-intro" aria-labelledby="page-title">
+					<div class="intro-icon" aria-hidden="true"><span></span><span></span><span></span></div>
+					<div><h1 id="page-title">1. Ask AI a Question</h1><p>Ask anything and get an AI-powered answer.</p></div>
+				</section>
+
+				<section class="question-card card" aria-labelledby="question-label">
+					<label id="question-label" for="question-input">Your Question</label>
+					<textarea id="question-input" maxlength="2000" placeholder="Type your question here..."></textarea>
+					<div class="question-actions">
+						<span class="character-count" id="character-count">0 / 2000 characters</span>
+						<div class="action-buttons">
+							<input class="visually-hidden" id="file-input" type="file" aria-label="Attach a file">
+							<button class="button button-secondary" id="attach-button" type="button"><span aria-hidden="true">&#128206;</span>Attach File</button>
+							<button class="button button-primary" id="ask-button" type="button"><span aria-hidden="true">&#10148;</span>Ask AI</button>
+						</div>
+					</div>
+				</section>
+
+				<section class="answer-card card" aria-labelledby="answer-title">
+					<h2 id="answer-title"><span aria-hidden="true">&#10024;</span> AI Answer</h2>
+					<div class="empty-answer">
+						<div class="robot" aria-hidden="true"><span class="antenna"></span><span class="robot-face"><i></i><i></i><b></b></span><span class="ear left"></span><span class="ear right"></span></div>
+						<h3>Your answer will appear here</h3>
+						<p>Ask a question above to get started.</p>
+					</div>
+				</section>
+			</main>
+		</div>
+	</div>
+	<div class="mobile-overlay" id="mobile-overlay"></div>
+	<script src="js/ask.js"></script>
+</body>
+</html>

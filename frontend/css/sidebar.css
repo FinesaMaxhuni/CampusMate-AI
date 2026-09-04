@@ -1,0 +1,19 @@
+.sidebar { position: fixed; z-index: 20; top: 0; bottom: 0; left: 0; display: flex; flex-direction: column; width: var(--sidebar-width); padding: 0 16px 22px; color: #f6f5ff; background: linear-gradient(180deg, #071a34 0%, #061a34 100%); }
+.brand { display: flex; align-items: center; gap: 10px; min-height: 94px; margin: 0 -16px 15px; padding: 0 24px; border-bottom: 1px solid rgba(255, 255, 255, .11); }
+.brand strong { display: block; font-size: 15px; letter-spacing: -.2px; white-space: nowrap; }
+.brand span { display: block; margin-top: 6px; color: #eef0ff; font-size: 11px; white-space: nowrap; }
+.brand-mark { position: relative; width: 28px; height: 28px; flex: 0 0 28px; }
+.brand-cap { position: absolute; top: 3px; left: 2px; width: 23px; height: 17px; background: linear-gradient(135deg, #754cff, #4323d7); clip-path: polygon(50% 0, 100% 28%, 50% 57%, 0 28%); }
+.brand-cap::after { content: ""; position: absolute; top: 7px; left: 10px; width: 4px; height: 12px; background: #bcaaff; transform: skewY(-27deg); }
+.brand-tassel { position: absolute; bottom: 1px; right: 1px; width: 7px; height: 10px; border-right: 2px solid #9c84ff; border-bottom: 2px solid #9c84ff; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 5px; }
+.nav-item { display: flex; align-items: center; min-height: 43px; gap: 10px; padding: 0 8px; color: #f1f2fa; border-radius: 6px; font-size: 13px; font-weight: 500; text-decoration: none; transition: background .2s, color .2s; }
+.nav-item:hover { background: rgba(116, 87, 244, .18); }
+.nav-item.active { background: linear-gradient(110deg, #4b25d7, #6133ef); box-shadow: 0 7px 16px rgba(71, 39, 212, .23); }
+.nav-icon { width: 18px; color: #bd9eff; font-size: 16px; line-height: 1; text-align: center; }
+.nav-item.active .nav-icon { color: white; }
+.exit-item { margin-top: 7px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, .1); border-radius: 0; color: #ff7169; }
+.exit-item .nav-icon { color: #ff7169; }
+.sidebar-notice { display: flex; gap: 7px; margin-top: auto; padding: 11px 10px 10px; color: #edf1fb; background: rgba(62, 87, 125, .33); border-radius: 6px; }
+.notice-icon { color: #ffd329; font-size: 16px; line-height: 1; }
+.sidebar-notice p { font-size: 11px; line-height: 1.65; }
