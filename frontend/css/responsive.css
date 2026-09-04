@@ -57,3 +57,18 @@
 	.summary-tips-card { align-items: flex-start; }
 	.summary-document-art { display: none; }
 }
+
+@media (max-width: 800px) {
+	.quiz-settings-card { grid-template-columns: 1fr; gap: 18px; }
+	.quiz-about-panel { order: 2; }
+}
+
+@media (max-width: 560px) {
+	.quiz-content { padding-top: 24px; }
+	.quiz-content .page-intro { align-items: flex-start; }
+	.quiz-content .page-intro p { max-width: 260px; line-height: 1.45; }
+	.quiz-control-row { grid-template-columns: 1fr; gap: 14px; }
+	.generate-quiz-button { width: 100%; }
+	.quiz-tips-card { align-items: flex-start; }
+	.quiz-clipboard-art { display: none; }
+}
