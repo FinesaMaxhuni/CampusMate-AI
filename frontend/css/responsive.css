@@ -25,3 +25,19 @@
 	.button { padding: 0 13px; }
 	.user-area { gap: 9px; font-size: 12px; }
 }
+
+@media (max-width: 800px) {
+	.explain-content { padding-top: 24px; }
+	.topic-card { grid-template-columns: 1fr; gap: 18px; }
+	.difficulty-panel { order: 2; }
+}
+
+@media (max-width: 560px) {
+	.explain-content .page-intro { align-items: flex-start; }
+	.explain-content .page-intro p { max-width: 250px; line-height: 1.45; }
+	.form-row { align-items: stretch; flex-direction: column; gap: 14px; }
+	.difficulty-field { width: 100%; }
+	.explain-button { width: 100%; }
+	.tips-card { align-items: flex-start; }
+	.open-book { display: none; }
+}
