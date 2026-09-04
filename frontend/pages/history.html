@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>View Previous Questions | CampusMate AI</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/sidebar.css">
+	<link rel="stylesheet" href="../css/components.css">
+	<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="history-page">
+	<div class="app-shell">
+		<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+			<div class="brand">
+				<div class="brand-mark" aria-hidden="true"><span class="brand-cap"></span><span class="brand-tassel"></span></div>
+				<div><strong>CampusMate AI</strong><span>Your AI Study Assistant</span></div>
+			</div>
+			<nav class="sidebar-nav">
+				<a class="nav-item" href="../index.html"><span class="nav-icon" aria-hidden="true">&#128172;</span><span>1. Ask AI a Question</span></a>
+				<a class="nav-item" href="explain.html"><span class="nav-icon" aria-hidden="true">&#128218;</span><span>2. Explain a Topic</span></a>
+				<a class="nav-item" href="summarize.html"><span class="nav-icon" aria-hidden="true">&#128196;</span><span>3. Summarize Text</span></a>
+				<a class="nav-item" href="generate-quiz.html"><span class="nav-icon" aria-hidden="true">&#9745;</span><span>4. Generate Quiz</span></a>
+				<a class="nav-item" href="take-quiz.html"><span class="nav-icon" aria-hidden="true">&#9654;</span><span>5. Take Quiz</span></a>
+				<a class="nav-item active" href="history.html" aria-current="page"><span class="nav-icon" aria-hidden="true">&#9719;</span><span>6. View Previous Questions</span></a>
+				<a class="nav-item" href="statistics.html"><span class="nav-icon" aria-hidden="true">&#128202;</span><span>7. View Statistics</span></a>
+				<a class="nav-item exit-item" href="#"><span class="nav-icon" aria-hidden="true">&#10145;</span><span>8. Exit</span></a>
+			</nav>
+			<div class="sidebar-notice"><span class="notice-icon" aria-hidden="true">&#9888;</span><p>AI-generated information may contain mistakes. Verify important information and do not enter sensitive data.</p></div>
+		</aside>
+
+		<div class="main-shell">
+			<header class="topbar">
+				<button class="menu-button" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="true"><span></span><span></span><span></span></button>
+				<div class="user-area"><span>Hello, Finesë</span><span class="avatar" aria-label="Finesë">F</span></div>
+			</header>
+
+			<main class="content history-content">
+				<section class="page-intro" aria-labelledby="page-title">
+					<div class="intro-icon history-intro-icon" aria-hidden="true"><span class="history-clock"></span></div>
+					<div><h1 id="page-title">6. View Previous Questions</h1><p>Browse your previously asked questions and AI answers.</p></div>
+				</section>
+
+				<section class="history-filter-card card" aria-label="History filters">
+					<label class="history-search"><span aria-hidden="true">&#128269;</span><input id="history-search" type="search" placeholder="Search questions..." autocomplete="off"></label>
+					<select id="history-type" aria-label="Filter by type"><option value="All Types" selected>All Types</option><option value="Ask AI">Ask AI</option><option value="Explain Topic">Explain Topic</option><option value="Summarize Text">Summarize Text</option><option value="Generate Quiz">Generate Quiz</option><option value="Take Quiz">Take Quiz</option></select>
+					<select id="history-date" aria-label="Filter by date"><option value="All Dates" selected>All Dates</option><option value="Today">Today</option><option value="This Week">This Week</option><option value="This Month">This Month</option></select>
+					<button class="clear-filters-button" id="clear-filters" type="button"><span aria-hidden="true">&#8693;</span>Clear Filters</button>
+				</section>
+
+				<div class="history-layout">
+					<section class="history-list-card card" aria-labelledby="history-list-title">
+						<h2 id="history-list-title">Question History</h2>
+						<div class="history-list" id="history-list" aria-live="polite"></div>
+						<div class="history-pagination"><button class="pagination-button" id="history-previous" type="button" disabled><span aria-hidden="true">&#8592;</span>Previous</button><span id="history-page-label">Page 1 of 3</span><button class="pagination-button next-page" id="history-next" type="button">Next<span aria-hidden="true">&#8594;</span></button></div>
+					</section>
+
+					<aside class="history-preview-card card" aria-labelledby="preview-title">
+						<h2 id="preview-title"><span aria-hidden="true">&#128196;</span> Question Preview</h2>
+						<div class="history-divider"></div>
+						<div id="question-preview"></div>
+					</aside>
+				</div>
+			</main>
+		</div>
+	</div>
+	<div class="mobile-overlay" id="mobile-overlay"></div>
+	<script src="../js/main.js"></script>
+	<script src="../js/history.js"></script>
+</body>
+</html>

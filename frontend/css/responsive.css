@@ -96,3 +96,26 @@
 	.question-navigation .button { flex: 1; }
 	.question-navigator { flex-wrap: wrap; }
 }
+
+@media (max-width: 800px) {
+	.history-filter-card { flex-wrap: wrap; gap: 10px; }
+	.history-search { flex: 1 1 220px; width: auto; }
+	.history-filter-card select { flex: 1 1 140px; }
+	.clear-filters-button { margin-left: 0; }
+	.history-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+	.history-content { padding-top: 24px; }
+	.history-content .page-intro { align-items: flex-start; }
+	.history-content .page-intro p { max-width: 250px; line-height: 1.45; }
+	.history-filter-card { align-items: stretch; flex-direction: column; padding: 12px; }
+	.history-search, .history-filter-card select, .clear-filters-button { width: 100%; flex-basis: auto; }
+	.history-entry { align-items: flex-start; flex-wrap: wrap; }
+	.history-entry-main { min-width: calc(100% - 60px); }
+	.history-entry-date { width: auto; margin-left: 50px; flex-direction: row; }
+	.history-score { margin-left: auto; }
+	.history-pagination { gap: 8px; }
+	.history-pagination > span { white-space: nowrap; }
+	.history-preview-card { min-height: 0; }
+}
