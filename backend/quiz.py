@@ -26,11 +26,11 @@ def score_quiz(quiz, answers):
 
 		answered += 1
 		selected_option = options[ord(answer.upper()) - ord("A")]
-		if answer.upper() == correct_answer.upper() or selected_option == correct_answer:
+		if answer.upper() == correct_answer.strip().upper() or str(selected_option).strip().lower() == correct_answer.strip().lower():
 			correct += 1
 
 	total_questions = len(questions)
-	incorrect = answered - correct
+	incorrect = total_questions - correct
 	score = round((correct / total_questions) * 100)
 	return {
 		"total_questions": total_questions,

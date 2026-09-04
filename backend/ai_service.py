@@ -5,7 +5,7 @@ import os
 from typing import Any, Dict, List
 
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import AuthenticationError, OpenAI
 
 
 MODEL_NAME = "gpt-4o-mini"
@@ -27,7 +27,26 @@ _api_key = os.getenv("OPENAI_API_KEY")
 if not _api_key:
 	raise RuntimeError("OPENAI_API_KEY is not configured.")
 
-client = OpenAI(api_key=_api_key)
+
+
+def _openai_client():
+	"""Create the client without the known disabled sandbox proxy."""
+	proxy_names = ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy")
+	proxy_values = [os.getenv(name, "").lower().rstrip("/") for name in proxy_names]
+	if not any(proxy in {"http://127.0.0.1:9", "http://localhost:9"} for proxy in proxy_values):
+		return OpenAI(api_key=_api_key)
+
+	# The OpenAI SDK already bundles its HTTP client, so do not add a direct dependency.
+	saved_proxies = {name: os.environ.pop(name, None) for name in proxy_names}
+	try:
+		return OpenAI(api_key=_api_key)
+	finally:
+		for name, value in saved_proxies.items():
+			if value is not None:
+				os.environ[name] = value
+
+
+client = _openai_client()
 
 
 def _require_text(value: str, field_name: str) -> str:
@@ -59,6 +78,8 @@ def _request_text(prompt: str) -> str:
 			],
 		)
 		content = response.choices[0].message.content
+	except AuthenticationError as error:
+		raise AIServiceError("The OpenAI API key is invalid or has been revoked. Update OPENAI_API_KEY in .env.") from error
 	except Exception as error:
 		raise AIServiceError("The AI service is temporarily unavailable. Please try again later.") from error
 

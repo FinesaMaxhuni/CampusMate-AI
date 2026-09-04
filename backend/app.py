@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
 from ai_service import (
+	AIServiceError,
 	ask_question,
 	explain_topic,
 	generate_quiz,
@@ -64,6 +65,8 @@ def _service_error_response(error):
 	"""Convert service validation and runtime errors into safe JSON responses."""
 	if isinstance(error, ValueError):
 		return jsonify(success=False, error=str(error)), 400
+	if isinstance(error, AIServiceError):
+		return jsonify(success=False, error=str(error)), 502
 	return jsonify(
 		success=False,
 		error="Unable to process your request right now. Please try again.",
