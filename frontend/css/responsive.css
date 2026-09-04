@@ -41,3 +41,19 @@
 	.tips-card { align-items: flex-start; }
 	.open-book { display: none; }
 }
+
+@media (max-width: 800px) {
+	.summary-input-card { grid-template-columns: 1fr; gap: 18px; }
+	.summary-style-panel { order: 2; }
+}
+
+@media (max-width: 560px) {
+	.summarize-content { padding-top: 24px; }
+	.summarize-content .page-intro { align-items: flex-start; }
+	.summarize-content .page-intro p { max-width: 250px; line-height: 1.45; }
+	.summary-form-row { align-items: stretch; flex-direction: column; gap: 14px; }
+	.summary-style-field { width: 100%; }
+	.summarize-button { width: 100%; }
+	.summary-tips-card { align-items: flex-start; }
+	.summary-document-art { display: none; }
+}
