@@ -1,1 +1,1 @@
-# CampusMate
+# CampusMate-AI
