@@ -31,6 +31,16 @@ def frontend_js(filename):
 	return send_from_directory(FRONTEND_DIR / "js", filename)
 
 
+@app.get("/pages/<path:filename>")
+def frontend_page(filename):
+	return send_from_directory(FRONTEND_DIR / "pages", filename)
+
+
+@app.get("/components/<path:filename>")
+def frontend_component(filename):
+	return send_from_directory(FRONTEND_DIR / "components", filename)
+
+
 def _json_body():
 	"""Return a JSON object or a standard bad-request response."""
 	data = request.get_json(silent=True)
