@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
 from ai_service import (
@@ -11,6 +11,11 @@ from ai_service import (
 
 app = Flask(__name__)
 CORS(app)
+
+
+@app.get("/")
+def frontend_index():
+	return send_from_directory("../frontend", "index.html")
 
 
 def _json_body():
