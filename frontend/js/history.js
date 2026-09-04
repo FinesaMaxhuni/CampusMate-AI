@@ -1,11 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const historyData = [
-		{ id: 1, type: "Ask AI", question: "What is polymorphism in Java?", date: "May 20, 2025", isoDate: "2025-05-20", time: "10:30 AM", answer: "Polymorphism is one of the four fundamental OOP principles in Java. It allows objects of different classes to be treated as objects of a common superclass. It enables a single interface to represent different underlying forms (data types).\n\nThere are two types of polymorphism in Java:\n\n• Compile-time polymorphism (method overloading)\n• Runtime polymorphism (method overriding)" },
-		{ id: 2, type: "Explain Topic", question: "Explain recursion with an example.", date: "May 20, 2025", isoDate: "2025-05-20", time: "09:15 AM", answer: "Recursion is a technique where a function calls itself to solve a smaller version of the same problem." },
-		{ id: 3, type: "Summarize Text", question: "Summarize the benefits of OOP.", date: "May 19, 2025", isoDate: "2025-05-19", time: "08:45 PM", answer: "Object-oriented programming improves organization, reuse, and maintainability by grouping related data and behavior into objects." },
-		{ id: 4, type: "Generate Quiz", question: "Generate a quiz about Python Basics.", date: "May 19, 2025", isoDate: "2025-05-19", time: "07:30 PM", answer: "A Python Basics quiz can cover syntax, data types, control flow, and functions." },
-		{ id: 5, type: "Take Quiz", question: "Take quiz on Data Structures.", date: "May 18, 2025", isoDate: "2025-05-18", time: "06:20 PM", score: 80, answer: null }
-	];
+	let historyData = [];
 	const iconMap = { "Ask AI": "&#128172;", "Explain Topic": "&#128218;", "Summarize Text": "&#128196;", "Generate Quiz": "&#9745;", "Take Quiz": "&#9654;" };
 	const list = document.getElementById("history-list");
 	const preview = document.getElementById("question-preview");
@@ -13,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const typeFilter = document.getElementById("history-type");
 	const dateFilter = document.getElementById("history-date");
 	const pageLabel = document.getElementById("history-page-label");
-	let selectedId = historyData[0].id;
+	let selectedId;
 	let visibleItems = [...historyData];
 
 	const renderPreview = (item) => {
@@ -39,10 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		const query = search.value.trim().toLowerCase();
 		const type = typeFilter.value;
 		const date = dateFilter.value;
+		const now = new Date();
+		const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+		const startOfWeek = new Date(startOfToday);
+		startOfWeek.setDate(startOfToday.getDate() - startOfToday.getDay());
+		const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 		visibleItems = historyData.filter((item) => {
 			const matchesSearch = !query || item.question.toLowerCase().includes(query);
 			const matchesType = type === "All Types" || item.type === type;
-			const matchesDate = date === "All Dates" || (date === "This Month" && item.isoDate.startsWith("2025-05")) || (date === "This Week" && ["2025-05-18", "2025-05-19", "2025-05-20"].includes(item.isoDate)) || (date === "Today" && item.isoDate === "2025-05-20");
+			const itemDate = item.isoDate ? new Date(`${item.isoDate}T00:00:00`) : null;
+			const matchesDate = date === "All Dates" || (itemDate && ((date === "Today" && itemDate >= startOfToday) || (date === "This Week" && itemDate >= startOfWeek) || (date === "This Month" && itemDate >= startOfMonth)));
 			return matchesSearch && matchesType && matchesDate;
 		});
 		if (!visibleItems.some((item) => item.id === selectedId)) selectedId = visibleItems[0]?.id;
@@ -51,10 +51,46 @@ document.addEventListener("DOMContentLoaded", () => {
 	};
 
 	[search, typeFilter, dateFilter].forEach((control) => control.addEventListener("input", applyFilters));
-	document.getElementById("clear-filters").addEventListener("click", () => { search.value = ""; typeFilter.value = "All Types"; dateFilter.value = "All Dates"; selectedId = historyData[0].id; applyFilters(); });
+	document.getElementById("clear-filters").addEventListener("click", () => { search.value = ""; typeFilter.value = "All Types"; dateFilter.value = "All Dates"; selectedId = historyData[0]?.id; applyFilters(); });
 	document.getElementById("history-next").addEventListener("click", () => { pageLabel.textContent = "Page 2 of 3"; document.getElementById("history-previous").disabled = false; });
 	document.getElementById("history-previous").addEventListener("click", () => { pageLabel.textContent = "Page 1 of 3"; document.getElementById("history-previous").disabled = true; });
 
-	renderList();
-	renderPreview(historyData[0]);
+	list.innerHTML = '<div class="history-empty"><strong>Loading history...</strong></div>';
+	fetch("/api/history")
+		.then((response) => response.ok ? response.json() : Promise.reject(new Error("History request failed")))
+		.then((data) => {
+			if (!data.success || !Array.isArray(data.history)) throw new Error("Invalid history response");
+			historyData = data.history.map((record, index) => {
+				const date = record.timestamp ? new Date(record.timestamp) : null;
+				const typeMap = {
+					ask: "Ask AI",
+					question: "Ask AI",
+					explain: "Explain Topic",
+					summarize: "Summarize Text",
+					quiz_generated: "Generate Quiz",
+					quiz_completed: "Take Quiz",
+					quiz: "Take Quiz",
+				};
+				const displayType = typeMap[record.type] || "Ask AI";
+				return {
+					...record,
+					id: index + 1,
+					type: displayType,
+					question: record.question || record.topic || "Previous activity",
+					date: date ? date.toLocaleDateString() : "",
+					isoDate: date ? date.toISOString().slice(0, 10) : "",
+					time: date ? date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "",
+					score: record.score,
+					answer: record.answer || record.explanation || record.summary || null,
+				};
+			});
+			selectedId = historyData[0]?.id;
+			visibleItems = [...historyData];
+			renderList();
+			if (selectedId) renderPreview(historyData[0]);
+		})
+		.catch(() => {
+			list.innerHTML = '<div class="history-empty"><strong>Unable to load history.</strong><p>Please try again later.</p></div>';
+			preview.innerHTML = '<div class="history-empty preview-empty"><strong>No previous questions found.</strong></div>';
+		});
 });

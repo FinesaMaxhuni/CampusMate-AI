@@ -9,6 +9,9 @@ from ai_service import (
 	generate_quiz,
 	summarize_text,
 )
+from quiz import score_quiz
+from storage import add_history_entry, get_history
+from student import Student
 
 
 app = Flask(__name__)
@@ -79,6 +82,7 @@ def ask():
 
 	try:
 		answer = ask_question(question)
+		add_history_entry({"type": "ask", "question": question, "answer": answer})
 	except Exception as error:
 		return _service_error_response(error)
 	return jsonify(success=True, answer=answer), 200
@@ -99,6 +103,7 @@ def explain():
 
 	try:
 		explanation = explain_topic(topic, difficulty.strip())
+		add_history_entry({"type": "explain", "topic": topic, "difficulty": difficulty.strip(), "explanation": explanation})
 	except Exception as error:
 		return _service_error_response(error)
 	return jsonify(success=True, explanation=explanation), 200
@@ -119,6 +124,7 @@ def summarize():
 
 	try:
 		summary = summarize_text(text, style.strip())
+		add_history_entry({"type": "summarize", "style": style.strip(), "text": text, "summary": summary})
 	except Exception as error:
 		return _service_error_response(error)
 	return jsonify(success=True, summary=summary), 200
@@ -151,9 +157,62 @@ def generate_quiz_route():
 
 	try:
 		quiz = generate_quiz(topic, difficulty.strip(), question_count)
+		add_history_entry({
+			"type": "quiz_generated",
+			"topic": topic,
+			"difficulty": difficulty.strip(),
+			"number_of_questions": question_count,
+			"quiz": quiz,
+		})
 	except Exception as error:
 		return _service_error_response(error)
 	return jsonify(success=True, quiz=quiz), 200
+
+
+@app.post("/api/submit-quiz")
+def submit_quiz():
+	data, error_response = _json_body()
+	if error_response:
+		return error_response
+	if "quiz" not in data:
+		return jsonify(success=False, error="Quiz is required."), 400
+	if "answers" not in data:
+		return jsonify(success=False, error="Answers are required."), 400
+
+	try:
+		result = score_quiz(data["quiz"], data["answers"])
+	except ValueError as error:
+		return jsonify(success=False, error=str(error)), 400
+	except Exception as error:
+		return _service_error_response(error)
+	try:
+		quiz = data["quiz"]
+		add_history_entry({
+			"type": "quiz_completed",
+			"topic": quiz.get("topic"),
+			"difficulty": quiz.get("difficulty"),
+			**result,
+		})
+	except Exception as error:
+		return _service_error_response(error)
+	return jsonify(success=True, **result), 200
+
+
+@app.get("/api/history")
+def history():
+	try:
+		return jsonify(success=True, history=get_history()), 200
+	except Exception:
+		return jsonify(success=False, error="Unable to load history right now."), 500
+
+
+@app.get("/api/statistics")
+def statistics():
+	try:
+		result = Student(get_history()).statistics()
+		return jsonify(success=True, statistics=result), 200
+	except Exception:
+		return jsonify(success=False, error="Unable to load statistics right now."), 500
 
 
 @app.get("/api/health")

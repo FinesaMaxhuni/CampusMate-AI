@@ -1,0 +1,98 @@
+[
+  {
+    "type": "question",
+    "question": "Qka eshte RAM Memoria",
+    "answer": "RAM, ose \"Random Access Memory,\" është një lloj memorjeje kompjuterike që përdoret për të ruajtur të dhëna dhe informacione të përkohshme gjatë përdorimit të një pajisjeje. Kur një kompjuter funksionon, ai përdor RAM-in për të ruajtur të dhënat e proceseve që janë duke u ekzekutuar. Kjo do të thotë se sa më shumë RAM të ketë një kompjuter, aq më shumë informacione dhe programe mund të përpunohen në të njëjtën kohë.\n\nNjë aspekt i rëndësishëm i RAM-it është se ai është \"të dhëna të përkohshme\". Kjo do të thotë se çdo informacion që ndodhet në RAM do të humbasë kur kompjuteri është ndaluar ose rinisur. Kështu, për të ruajtur përjetësisht të dhënat, ne përdorim hapësira të tjera memorie, siç është një hard disk ose një SSD (Solid State Drive).\n\nNjë tjetër koncept i rëndësishëm është se RAM-i lejon qasje të shpejtë në të dhëna, e cila është thelbësore për performancën e kompjuterit. Kur ne hapim një program ose një skedar, ato ngjiten në RAM në mënyrë që kompjuteri t'i përpunojë ato shumë më shpejt se sa nëse do të ishin ruajtur në hard disk.\n\nNë përfundim, RAM-i është kritik për funksionimin efikas të kompjuterëve, sepse lehtëson ruajtjen dhe qasjen e shpejtë në të dhëna. Nëse ke pyetje të tjera rreth RAM-it apo funksionit të tij, mos hezito të pyesësh!",
+    "timestamp": "2026-09-04T16:59:34.369855+00:00"
+  },
+  {
+    "type": "question",
+    "question": "Qka eshte programimi edhe cilat gjuhe po perdoren sot me se shumti",
+    "answer": "Programimi është procesi i krijimit të udhëzimeve që kompjuterët i ndjekin për të realizuar detyra të caktuara. Këto udhëzime përshkruhen në forma të ndryshme duke përdorur gjuhë programuese. Rëndësia e programimit qëndron në faktin se ai na lejon të krijojmë aplikacione, software, lojëra, faqe interneti dhe shumë më tepër.\n\nGjuha programuese është një sistem simbolesh dhe rregullash që përdoren për të shkruar kodin që ndihmon në komunikimin me kompjuterin. Çdo gjuhë ka karakteristikat e saj dhe është e përshtatshme për lloje të ndryshme projektesh.\n\nDisa nga gjuhët më të njohura dhe të përdorura sot janë:\n\n1. **Python**: E njohur për sintaksën e saj të thjeshtë dhe që është e lehtë për t'u mësuar, përdoret gjerësisht për zhvillimin e aplikacioneve, analizën e të dhënave dhe inteligjencën artificiale.\n\n2. **Java**: Një gjuhë e fortë që funksionon në shumë platforma, e përdorur për zhvillimin e aplikacioneve të web-it dhe aplikacioneve mobile.\n\n3. **JavaScript**: E domosdoshme për zhvillimin e faqeve të internetit, ajo i ndihmon zhvilluesit të krijojnë efekte interaktive dhe dinamike.\n\n4. **C++**: Një gjuhë më e avancuar, e cila shpesh përdoret në zhvillimin e softuerëve dhe lojërave për shkak të performancës së saj të lartë.\n\n5. **C#**: Kjo gjuhë është e njohur për zhvillimin në ambientin e Microsoft dhe përdoret shpesh për aplikacione desktop dhe lojëra.\n\nMësimi i programimit është një aftësi shumë e çmuar sot, sepse ai hap mundësi për karriera të ndryshme dhe ndihmon në zhvilimin e një mënyre të menduarit logjike. Të kuptosh se si funksionon ky proces dhe cilat janë gjuhët e përdorura do të ndihmojë që të zhvillosh një bazë të fortë në këtë fushë. Mënyra më e mirë për të filluar është të zgjidhësh një gjuhë dhe të praktikosh duke punuar në projekte të ndryshme.",
+    "timestamp": "2026-09-04T17:00:16.823837+00:00"
+  },
+  {
+    "type": "explain",
+    "topic": "python",
+    "difficulty": "intermediate",
+    "explanation": "### Overview of Python\n\nPython is a high-level, interpreted programming language that is widely used for various applications, such as web development, data analysis, machine learning, automation, and more. It is known for its readability and simplicity, making it an excellent choice for beginners while also being powerful enough for advanced users. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming.\n\n### Key Ideas\n\n1. **Syntax and Readability**: \n   - Python uses a clear, easy-to-read syntax that emphasizes readability. For example, it uses indentation to define blocks of code instead of braces or keywords. This reduces the likelihood of syntax errors and makes the code easier to follow.\n\n2. **Data Types and Structures**:\n   - Python has built-in data types such as integers, floats, strings, and booleans. It also includes powerful data structures like lists, tuples, dictionaries, and sets, which allow for efficient data manipulation and storage.\n   - Example: A list can store multiple values: `my_list = [1, 2, 3, 'hello']`.\n\n3. **Functions**:\n   - Functions in Python are defined using the `def` keyword and can encapsulate reusable logic. They can take parameters and return values, which promotes modular programming.\n   - Example: \n     ```python\n     def add_numbers(a, b):\n         return a + b\n     ```\n\n4. **Object-Oriented Programming (OOP)**:\n   - Python supports OOP, allowing you to create classes that encapsulate data and functions that operate on that data. This makes it easier to model real-world entities and promotes code reusability.\n   - Example:\n     ```python\n     class Dog:\n         def __init__(self, name):\n             self.name = name\n         \n         def bark(self):\n             return \"Woof!\"\n     ```\n\n5. **Libraries and Frameworks**:\n   - Python has a rich ecosystem of libraries and frameworks that extend its functionality. For example, NumPy and pandas for data analysis, Flask and Django for web development, and TensorFlow and PyTorch for machine learning.\n\n6. **Interoperability**:\n   - Python can easily interact with other programming languages and technologies. This is especially useful in web applications, where Python is often used on the backend while HTML, CSS, and JavaScript are used on the frontend.\n\n### Example: Simple Web Scraping with Python\n\nTo illustrate Python’s practical application, let's do a simple web scraping example using the `BeautifulSoup` library to extract data from a webpage.\n\n#### Step 1: Install Required Libraries\n\nFirst, make sure you have the libraries installed. You can do this using pip:\n```bash\npip install requests beautifulsoup4\n```\n\n#### Step 2: Write the Python Code\n\nHere’s a small script that fetches the titles of articles from a hypothetical webpage:\n\n```python\nimport requests\nfrom bs4 import BeautifulSoup\n\n# Step 1: Send a GET request to the website\nurl = 'http://example.com/articles'  # Replace with the actual URL\nresponse = requests.get(url)\n\n# Step 2: Parse the HTML content\nsoup = BeautifulSoup(response.content, 'html.parser')\n\n# Step 3: Find all article titles\ntitles = soup.find_all('h2')  # Assuming article titles are in <h2> tags\n\n# Step 4: Print the titles\nfor title in titles:\n    print(title.get_text())\n```\n\n#### Explanation of the Code:\n1. **Import Libraries**: We import the required libraries, `requests` to fetch web content and `BeautifulSoup` to parse the HTML.\n2. **Send Request**: We send an HTTP GET request to the target URL to retrieve the webpage.\n3. **Parse HTML**: We create a `BeautifulSoup` object to parse the returned HTML content.\n4. **Extract Data**: We use `find_all()` to extract all the `<h2>` tags, which are assumed to contain article titles.\n5. **Output**: Finally, we loop through the results and print the text of each title.\n\n### Conclusion\n\nPython is a versatile language with clear syntax, strong support for data structures, and robust libraries, making it suitable for both beginners and advanced users. Its capabilities extend beyond simple scripting to complex applications like web scraping, data analysis, and more, showcasing its power and flexibility. By mastering Python, you position yourself to take on diverse programming challenges in various fields.",
+    "timestamp": "2026-09-04T17:10:02.094806+00:00"
+  },
+  {
+    "type": "quiz_generated",
+    "topic": "data structures",
+    "difficulty": "intermediate",
+    "number_of_questions": 5,
+    "quiz": {
+      "questions": [
+        {
+          "question": "Which of the following data structures is not a linear data structure?",
+          "options": [
+            "Array",
+            "Linked List",
+            "Stack",
+            "Tree"
+          ],
+          "correct_answer": "Tree",
+          "explanation": "A tree is a non-linear data structure because it contains nodes connected in a hierarchical manner, whereas arrays, linked lists, and stacks are linear."
+        },
+        {
+          "question": "What is the average time complexity for searching an element in a hash table?",
+          "options": [
+            "O(1)",
+            "O(n)",
+            "O(log n)",
+            "O(n log n)"
+          ],
+          "correct_answer": "O(1)",
+          "explanation": "The average time complexity for searching an element in a hash table is O(1), as it allows for constant time access to elements through its hash function."
+        },
+        {
+          "question": "In a binary search tree, which of the following properties holds true?",
+          "options": [
+            "All nodes have zero or one child.",
+            "All left descendants are less than the node, and all right descendants are greater.",
+            "The tree is always balanced.",
+            "The depth of the tree is always minimized."
+          ],
+          "correct_answer": "All left descendants are less than the node, and all right descendants are greater.",
+          "explanation": "A binary search tree (BST) maintains the property that all nodes in the left subtree of a given node contain values less than the node's value, and all nodes in the right subtree contain values greater."
+        },
+        {
+          "question": "Which data structure uses the LIFO principle?",
+          "options": [
+            "Queue",
+            "Array",
+            "Linked List",
+            "Stack"
+          ],
+          "correct_answer": "Stack",
+          "explanation": "A stack is a data structure that follows the Last In, First Out (LIFO) principle, where the last element added is the first one to be removed."
+        },
+        {
+          "question": "What is the main advantage of using a linked list over an array?",
+          "options": [
+            "Memory usage",
+            "Fast access time",
+            "Dynamic size",
+            "Simplicity of implementation"
+          ],
+          "correct_answer": "Dynamic size",
+          "explanation": "The primary advantage of linked lists over arrays is that linked lists can grow and shrink dynamically, allowing for flexible memory use, while arrays have a fixed size."
+        }
+      ]
+    },
+    "timestamp": "2026-09-04T17:10:41.811539+00:00"
+  },
+  {
+    "type": "quiz_completed",
+    "topic": "data structures",
+    "difficulty": "Intermediate",
+    "total_questions": 5,
+    "answered": 5,
+    "correct": 1,
+    "incorrect": 4,
+    "score": 20,
+    "timestamp": "2026-09-04T17:10:56.811974+00:00"
+  }
+]
