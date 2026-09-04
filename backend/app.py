@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
@@ -11,11 +13,22 @@ from ai_service import (
 
 app = Flask(__name__)
 CORS(app)
+FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
 
 
 @app.get("/")
 def frontend_index():
-	return send_from_directory("../frontend", "index.html")
+	return send_from_directory(FRONTEND_DIR, "index.html")
+
+
+@app.get("/css/<path:filename>")
+def frontend_css(filename):
+	return send_from_directory(FRONTEND_DIR / "css", filename)
+
+
+@app.get("/js/<path:filename>")
+def frontend_js(filename):
+	return send_from_directory(FRONTEND_DIR / "js", filename)
 
 
 def _json_body():
