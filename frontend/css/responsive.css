@@ -72,3 +72,27 @@
 	.quiz-tips-card { align-items: flex-start; }
 	.quiz-clipboard-art { display: none; }
 }
+
+@media (max-width: 800px) {
+	.quiz-info-bar { flex-wrap: wrap; gap: 12px 24px; }
+	.quiz-info-bar .danger-button { margin-left: auto; }
+	.quiz-main-layout { grid-template-columns: 1fr; }
+	.quiz-secondary-column { display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+@media (max-width: 560px) {
+	.take-content { padding-top: 24px; }
+	.take-content .page-intro { align-items: flex-start; }
+	.take-content .page-intro p { max-width: 250px; line-height: 1.45; }
+	.quiz-info-bar { align-items: flex-start; flex-direction: column; gap: 9px; padding: 13px 14px; }
+	.quiz-info-bar .danger-button { align-self: stretch; margin-left: 0; }
+	.quiz-secondary-column { display: flex; }
+	.question-card-new { padding: 15px 12px; }
+	.question-progress-header { font-size: 10px; }
+	.question-text { font-size: 12px; }
+	.code-block { font-size: 10px; }
+	.answer-option { min-height: 39px; }
+	.question-navigation { gap: 10px; }
+	.question-navigation .button { flex: 1; }
+	.question-navigator { flex-wrap: wrap; }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Take Quiz | CampusMate AI</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/sidebar.css">
+	<link rel="stylesheet" href="../css/components.css">
+	<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="take-quiz-page">
+	<div class="app-shell">
+		<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+			<div class="brand">
+				<div class="brand-mark" aria-hidden="true"><span class="brand-cap"></span><span class="brand-tassel"></span></div>
+				<div><strong>CampusMate AI</strong><span>Your AI Study Assistant</span></div>
+			</div>
+			<nav class="sidebar-nav">
+				<a class="nav-item" href="../index.html"><span class="nav-icon" aria-hidden="true">&#128172;</span><span>1. Ask AI a Question</span></a>
+				<a class="nav-item" href="explain.html"><span class="nav-icon" aria-hidden="true">&#128218;</span><span>2. Explain a Topic</span></a>
+				<a class="nav-item" href="summarize.html"><span class="nav-icon" aria-hidden="true">&#128196;</span><span>3. Summarize Text</span></a>
+				<a class="nav-item" href="generate-quiz.html"><span class="nav-icon" aria-hidden="true">&#9745;</span><span>4. Generate Quiz</span></a>
+				<a class="nav-item active" href="take-quiz.html" aria-current="page"><span class="nav-icon" aria-hidden="true">&#9654;</span><span>5. Take Quiz</span></a>
+				<a class="nav-item" href="history.html"><span class="nav-icon" aria-hidden="true">&#9719;</span><span>6. View Previous Questions</span></a>
+				<a class="nav-item" href="statistics.html"><span class="nav-icon" aria-hidden="true">&#128202;</span><span>7. View Statistics</span></a>
+				<a class="nav-item exit-item" href="#"><span class="nav-icon" aria-hidden="true">&#10145;</span><span>8. Exit</span></a>
+			</nav>
+			<div class="sidebar-notice"><span class="notice-icon" aria-hidden="true">&#9888;</span><p>AI-generated information may contain mistakes. Verify important information and do not enter sensitive data.</p></div>
+		</aside>
+
+		<div class="main-shell">
+			<header class="topbar">
+				<button class="menu-button" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="true"><span></span><span></span><span></span></button>
+				<div class="user-area"><span>Hello, Finesë</span><span class="avatar" aria-label="Finesë">F</span></div>
+			</header>
+
+			<main class="content take-content">
+				<section class="page-intro" aria-labelledby="page-title">
+					<div class="intro-icon take-intro-icon" aria-hidden="true"><span class="play-mark"></span></div>
+					<div><h1 id="page-title">5. Take Quiz</h1><p>Answer the questions and test your knowledge.</p></div>
+				</section>
+
+				<section class="quiz-info-bar card" aria-label="Quiz information">
+					<div class="quiz-info-item"><span class="info-icon" aria-hidden="true">&#128196;</span><strong>Topic:</strong><span data-quiz-topic>Python Basics</span></div>
+					<div class="quiz-info-item"><span class="info-icon" aria-hidden="true">&#128202;</span><strong>Difficulty:</strong><span data-quiz-difficulty>Intermediate</span></div>
+					<div class="quiz-info-item"><span class="info-icon" aria-hidden="true">&#10067;</span><strong>Questions:</strong><span data-quiz-total>5</span></div>
+					<button class="danger-button" id="end-quiz-button" type="button"><span aria-hidden="true">&#9632;</span>End Quiz</button>
+				</section>
+
+				<div class="quiz-main-layout">
+					<div class="quiz-primary-column">
+						<section class="question-card-new card" aria-labelledby="question-heading">
+							<div class="question-progress-header"><strong id="question-heading">Question <span id="current-question-number">1</span> of <span id="total-question-number">5</span></strong><strong class="progress-label" id="progress-label">20% Complete</strong></div>
+							<div class="progress-track"><span id="progress-bar"></span></div>
+							<div class="question-content" data-question-index="0">
+								<p class="question-text">What is the output of the following code?</p>
+								<pre class="code-block"><code><span class="code-variable">x</span> = <span class="code-number">[1, 2, 3]</span>
+<span class="code-variable">y</span> = <span class="code-variable">x</span>
+<span class="code-variable">y</span>.<span class="code-method">append</span>(<span class="code-number">4</span>)
+<span class="code-function">print</span>(<span class="code-variable">x</span>)</code></pre>
+								<fieldset class="answer-options" aria-label="Answer options">
+									<label class="answer-option"><input type="radio" name="quiz-answer" value="A"><span class="option-letter">A.</span><span>[1, 2, 3]</span></label>
+									<label class="answer-option selected"><input type="radio" name="quiz-answer" value="B" checked><span class="option-letter">B.</span><span>[1, 2, 3, 4]</span></label>
+									<label class="answer-option"><input type="radio" name="quiz-answer" value="C"><span class="option-letter">C.</span><span>[4]</span></label>
+									<label class="answer-option"><input type="radio" name="quiz-answer" value="D"><span class="option-letter">D.</span><span>Error</span></label>
+								</fieldset>
+							</div>
+							<div class="question-navigation"><button class="button button-secondary previous-button" id="previous-question" type="button" disabled><span aria-hidden="true">&#8592;</span>Previous</button><button class="button button-primary next-button" id="next-question" type="button">Next Question<span aria-hidden="true">&#8594;</span></button></div>
+						</section>
+
+						<section class="result-card card" aria-labelledby="result-title">
+							<div class="trophy-icon" aria-hidden="true"><span>&#9819;</span></div>
+							<h2 id="result-title">Your Result will appear here</h2>
+							<p>Complete the quiz to see your score and performance.</p>
+						</section>
+					</div>
+
+					<aside class="quiz-secondary-column">
+						<section class="quiz-overview-card card" aria-labelledby="overview-title">
+							<h2 id="overview-title"><span aria-hidden="true">&#128203;</span> Quiz Overview</h2>
+							<div class="quiz-stat-grid">
+								<div class="quiz-stat"><strong id="stat-total">5</strong><span>Total Questions</span></div>
+								<div class="quiz-stat"><strong id="stat-answered">0</strong><span>Answered</span></div>
+								<div class="quiz-stat correct-stat"><strong id="stat-correct">0</strong><span>Correct</span></div>
+								<div class="quiz-stat incorrect-stat"><strong id="stat-incorrect">0</strong><span>Incorrect</span></div>
+							</div>
+							<h3 class="navigator-title">Question Navigator</h3>
+							<div class="question-navigator" id="question-navigator" aria-label="Question Navigator"><button class="question-number active" type="button" data-question="0">1</button><button class="question-number" type="button" data-question="1">2</button><button class="question-number" type="button" data-question="2">3</button><button class="question-number" type="button" data-question="3">4</button><button class="question-number" type="button" data-question="4">5</button></div>
+							<p class="navigator-help">Click on a number to go to that question.</p>
+						</section>
+						<section class="quiz-tips-side card" aria-labelledby="quiz-tips-title"><h2 id="quiz-tips-title"><span aria-hidden="true">&#128161;</span> Quiz Tips</h2><ul><li>Read each question carefully.</li><li>You can navigate between questions using the numbers above.</li><li>Your score will be shown at the end of the quiz.</li></ul></section>
+					</aside>
+				</div>
+
+				<div class="quiz-confirmation" id="quiz-confirmation" role="dialog" aria-modal="true" aria-labelledby="confirmation-title" hidden><div class="confirmation-panel"><h2 id="confirmation-title">Are you sure you want to end the quiz?</h2><p>Your progress will remain available for the current session.</p><div><button class="button button-secondary" id="cancel-end-quiz" type="button">Cancel</button><button class="danger-button confirm-danger" id="confirm-end-quiz" type="button">End Quiz</button></div></div></div>
+			</main>
+		</div>
+	</div>
+	<div class="mobile-overlay" id="mobile-overlay"></div>
+	<script src="../js/main.js"></script>
+	<script src="../js/take-quiz.js"></script>
+</body>
+</html>
