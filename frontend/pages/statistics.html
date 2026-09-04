@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>View Statistics | CampusMate AI</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/sidebar.css">
+	<link rel="stylesheet" href="../css/components.css">
+	<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="statistics-page">
+	<div class="app-shell">
+		<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+			<div class="brand">
+				<div class="brand-mark" aria-hidden="true"><span class="brand-cap"></span><span class="brand-tassel"></span></div>
+				<div><strong>CampusMate AI</strong><span>Your AI Study Assistant</span></div>
+			</div>
+			<nav class="sidebar-nav">
+				<a class="nav-item" href="../index.html"><span class="nav-icon" aria-hidden="true">&#128172;</span><span>1. Ask AI a Question</span></a>
+				<a class="nav-item" href="explain.html"><span class="nav-icon" aria-hidden="true">&#128218;</span><span>2. Explain a Topic</span></a>
+				<a class="nav-item" href="summarize.html"><span class="nav-icon" aria-hidden="true">&#128196;</span><span>3. Summarize Text</span></a>
+				<a class="nav-item" href="generate-quiz.html"><span class="nav-icon" aria-hidden="true">&#9745;</span><span>4. Generate Quiz</span></a>
+				<a class="nav-item" href="take-quiz.html"><span class="nav-icon" aria-hidden="true">&#9654;</span><span>5. Take Quiz</span></a>
+				<a class="nav-item" href="history.html"><span class="nav-icon" aria-hidden="true">&#9719;</span><span>6. View Previous Questions</span></a>
+				<a class="nav-item active" href="statistics.html" aria-current="page"><span class="nav-icon" aria-hidden="true">&#128202;</span><span>7. View Statistics</span></a>
+				<a class="nav-item exit-item" href="#"><span class="nav-icon" aria-hidden="true">&#10145;</span><span>8. Exit</span></a>
+			</nav>
+			<div class="sidebar-notice"><span class="notice-icon" aria-hidden="true">&#9888;</span><p>AI-generated information may contain mistakes. Verify important information and do not enter sensitive data.</p></div>
+		</aside>
+
+		<div class="main-shell">
+			<header class="topbar">
+				<button class="menu-button" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="true"><span></span><span></span><span></span></button>
+				<div class="user-area"><span>Hello, Finesë</span><span class="avatar" aria-label="Finesë">F</span></div>
+			</header>
+
+			<main class="content statistics-content">
+				<section class="statistics-heading" aria-labelledby="page-title">
+					<div class="page-intro"><div class="intro-icon statistics-intro-icon" aria-hidden="true"><span class="bar bar-one"></span><span class="bar bar-two"></span><span class="bar bar-three"></span></div><div><h1 id="page-title">7. View Statistics</h1><p>Track your learning progress and performance.</p></div></div>
+					<label class="date-filter"><span aria-hidden="true">&#128197;</span><select id="statistics-period" aria-label="Statistics period"><option>Last 7 Days</option><option selected>Last 30 Days</option><option>Last 3 Months</option><option>All Time</option></select></label>
+				</section>
+
+				<section class="stat-card-grid" aria-label="Learning statistics">
+					  <article class="stat-card card"><div class="stat-icon question-stat-icon" aria-hidden="true">&#128172;</div><div><h2>Total Questions</h2><strong id="total-questions">42</strong><p class="stat-trend">&#8593; 12% <span class="period-context">from last 30 days</span></p></div></article>
+					  <article class="stat-card card"><div class="stat-icon quiz-stat-icon" aria-hidden="true">&#10003;</div><div><h2>Quizzes Completed</h2><strong id="quizzes-completed">16</strong><p class="stat-trend">&#8593; 15% <span class="period-context">from last 30 days</span></p></div></article>
+					  <article class="stat-card card"><div class="stat-icon score-stat-icon" aria-hidden="true">&#9678;</div><div><h2>Average Quiz Score</h2><strong><span id="average-quiz-score">78</span>%</strong><p class="stat-trend">&#8593; 8% <span class="period-context">from last 30 days</span></p></div></article>
+					  <article class="stat-card card"><div class="stat-icon topics-stat-icon" aria-hidden="true">&#128218;</div><div><h2>Topics Explained</h2><strong id="topics-explained">24</strong><p class="stat-trend">&#8593; 10% <span class="period-context">from last 30 days</span></p></div></article>
+				</section>
+
+				<section class="statistics-chart-grid">
+					<article class="large-stat-card card" aria-labelledby="questions-type-title"><h2 id="questions-type-title">Questions by Type</h2><div class="donut-layout"><div class="donut-wrap"><svg id="questions-donut" class="donut-chart" viewBox="0 0 200 200" role="img" aria-label="Questions by type donut chart"><circle class="donut-track" cx="100" cy="100" r="72"></circle><g id="donut-segments"></g><circle class="donut-hole" cx="100" cy="100" r="42"></circle></svg></div><div class="chart-legend" id="questions-legend"></div></div></article>
+					  <article class="large-stat-card performance-card card" aria-labelledby="performance-title"><h2 id="performance-title">Quiz Performance</h2><div class="performance-layout"><div class="score-ring-wrap"><svg id="score-ring" class="score-ring" viewBox="0 0 200 200" role="img" aria-label="Average quiz score ring"><circle class="score-ring-track" cx="100" cy="100" r="78" pathLength="100"></circle><circle id="score-ring-progress" class="score-ring-progress" cx="100" cy="100" r="78" pathLength="100"></circle></svg><div class="score-ring-label"><strong><span id="ring-score">78</span>%</strong><span>Average Score</span></div></div><div class="performance-rows" id="performance-rows"></div></div></article>
+				</section>
+			</main>
+		</div>
+	</div>
+	<div class="mobile-overlay" id="mobile-overlay"></div>
+	<script src="../js/main.js"></script>
+	<script src="../js/statistics.js"></script>
+</body>
+</html>

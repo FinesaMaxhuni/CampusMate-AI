@@ -1,4 +1,28 @@
 @media (max-width: 800px) {
+	.statistics-heading { align-items: flex-start; flex-wrap: wrap; gap: 10px; }
+	.statistics-heading .page-intro { margin-bottom: 0; }
+	.stat-card-grid { grid-template-columns: repeat(2, 1fr); }
+	.statistics-chart-grid { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 801px) and (max-width: 1050px) {
+	.statistics-page .stat-card-grid { grid-template-columns: repeat(2, 1fr); }
+	.statistics-page .statistics-chart-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+	.statistics-content { padding-top: 24px; }
+	.statistics-heading { flex-direction: column; }
+	.statistics-heading .page-intro { align-items: flex-start; }
+	.statistics-heading .page-intro p { max-width: 250px; line-height: 1.45; }
+	.date-filter { width: 100%; }
+	.stat-card-grid { grid-template-columns: 1fr; }
+	.stat-card { min-height: 108px; }
+	.donut-layout, .performance-layout { flex-direction: column; }
+	.chart-legend { width: min(100%, 220px); }
+	.performance-rows { width: min(100%, 260px); }
+}
+@media (max-width: 800px) {
 	:root { --sidebar-width: 0px; }
 	.sidebar { width: 250px; transform: translateX(-100%); transition: transform .25s ease; box-shadow: 8px 0 30px rgba(7, 27, 53, .2); }
 	body.sidebar-open .sidebar { transform: translateX(0); }
